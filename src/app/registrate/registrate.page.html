@@ -34,40 +34,37 @@
         <ion-col size="auto">
           <div class="bg-negro p-8 rounded-lg shadow-lg bg-opacity-40 w-3/4">
             <h1 class="text-2xl font-semibold text-blanco mb-4 text-center">Registro de Usuario</h1>
-            <form action="#" method="post">
-                <div class="mb-4">
-                    <label for="nombre" class="block text-blanco font-medium mb-2">Nombre:</label>
-                    <ion-input type="text" id="nombre" name="nombre" class="border border-gray-300 rounded-md p-2" required></ion-input>
-                </div>
-                <div class="mb-4">
-                    <label for="numero_control" class="block text-blanco font-medium mb-2">Número de Control:</label>
-                    <ion-input type="text" id="numero_control" name="numero_control" class="border border-gray-300 rounded-md p-2" required></ion-input>
-                </div>
-                <div class="mb-4">
-                    <label for="nip" class="block text-blanco font-medium mb-2">NIP:</label>
-                    <ion-input type="password" id="nip" name="nip" class="border border-gray-300 rounded-md p-2" required></ion-input>
-                </div>
-                <div class="mb-6">
-                    <label for="confirmar_nip" class="block text-blanco font-medium mb-2">Confirmar NIP:</label>
-                    <ion-input type="password" id="confirmar_nip" name="confirmar_nip" class="border border-gray-300 rounded-md p-2" required></ion-input>
-                </div>
-                <div class="text-center">
-                    <ion-button id="registrar" type="submit" class="bg-naranjam text-blanco font-semibold text-lg py-2 px-4 rounded-md hover:bg-naranja">Registrar</ion-button>
-                    <script>
-                      document.getElementById('registrar').addEventListener('click', function() {
-                          alert('Te has registrado correctamente');
-                          window.location.href = './iniciar.php';
-                          return false;                          
-                      });
-                  </script>
-                </div>
+            <!-- Utiliza el FormGroup y los controles de formulario -->
+            <form [formGroup]="registrateForm" (ngSubmit)="registrate()">
+              <div class="mb-4">
+                <label for="username" class="block text-blanco font-medium mb-2">Username:</label>
+                <ion-input formControlName="username" class="border border-gray-300 rounded-md p-2"></ion-input>
+              </div>
+              <div class="mb-4">
+                <label for="email" class="block text-blanco font-medium mb-2">Email:</label>
+                <ion-input formControlName="email" class="border border-gray-300 rounded-md p-2"></ion-input>
+              </div>
+              <div class="mb-4">
+                <label for="noControl" class="block text-blanco font-medium mb-2">Número de Control:</label>
+                <ion-input formControlName="noControl" class="border border-gray-300 rounded-md p-2"></ion-input>
+              </div>
+              <div class="mb-4">
+                <label for="nip" class="block text-blanco font-medium mb-2">NIP:</label>
+                <ion-input formControlName="nip" type="password"
+                  class="border border-gray-300 rounded-md p-2"></ion-input>
+              </div>
+              <div class="text-center">
+                <ion-button type="submit"
+                  class="bg-naranjam text-blanco font-semibold text-lg py-2 px-4 rounded-md hover:bg-naranja">Registrar</ion-button>
+              </div>
             </form>
-        </div>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </main>
 </ion-content>
+
 
 <ion-footer class="ion-padding-top ion-background-gradient">
   <ion-grid class="ion-padding-start ion-padding-end">
