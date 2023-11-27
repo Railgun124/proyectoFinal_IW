@@ -34,25 +34,26 @@
         <ion-col size="auto">
           <div class="bg-negro p-8 rounded-lg shadow-lg bg-opacity-40 w-3/4">
             <h1 class="text-2xl font-semibold text-blanco mb-4 text-center">Iniciar Sesión</h1>
-            <form action="iniciar-manejo.php" method="post">
-                <div class="mb-4">
-                    <ion-label for="numero_control" class="block text-blanco font-medium mb-2">Número de Control:</ion-label>
-                    <ion-input type="text" id="numero_control" name="numero_control" class="border border-gray-300 rounded-md p-2" required></ion-input>
-                </div>
-                <div class="mb-4">
-                    <ion-label for="nip" class="block text-blanco font-medium mb-2">NIP:</ion-label>
-                    <ion-input type="password" id="nip" name="nip" class="border border-gray-300 rounded-md p-2" required></ion-input>
-                </div>
-                <div class="text-center">
-                    <ion-button id="iniciarSesion" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">Iniciar Sesión</ion-button>
-                </div>
+            <form [formGroup]="iniciarSesionForm" (ngSubmit)="iniciarSesion()">
+              <div class="mb-4">
+                <ion-label for="numero_control" class="block text-blanco font-medium mb-2">Número de Control:</ion-label>
+                <ion-input formControlName="numero_control" class="border border-gray-300 rounded-md p-2" required></ion-input>
+              </div>
+              <div class="mb-4">
+                <ion-label for="nip" class="block text-blanco font-medium mb-2">NIP:</ion-label>
+                <ion-input formControlName="nip" type="password" class="border border-gray-300 rounded-md p-2" required></ion-input>
+              </div>
+              <div class="text-center">
+                <ion-button id="iniciarSesion" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">Iniciar Sesión</ion-button>
+              </div>
             </form>
-        </div>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </main>
 </ion-content>
+
 
 <ion-footer class="ion-padding-top ion-background-gradient">
   <ion-grid class="ion-padding-start ion-padding-end">

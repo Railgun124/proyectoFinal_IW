@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { User } from '../models/user';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/compat/firestore';
 
 
 @Injectable({
@@ -45,4 +45,28 @@ export class UserService {
     });
   }
 
+  searchUser(username: string, nip: string): Observable<User[]> {
+    return new Observable((observer) => {
+      this.userCollection.ref
+        .where('username', '==', username)
+        .where('nip', '==', nip)
+        .get()
+        .then((querySnapshot) => {
+          const users = querySnapshot.docs.map((doc) => {
+            const data = doc.data() as User;
+            const id = doc.id;
+            return { id, ...data };
+          });
+          observer.next(users);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+          observer.complete();
+        });
+    });
+  }
+  
 }
+
+
