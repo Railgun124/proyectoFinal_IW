@@ -13,10 +13,12 @@ import { ToastController } from '@ionic/angular';
 export class RegistratePage implements OnInit {
   registrateForm: FormGroup;
 
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private toastController: ToastController) {
+    private toastController: ToastController
+  ) {
     this.registrateForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -25,35 +27,36 @@ export class RegistratePage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async registrate() {
     if (this.registrateForm.valid) {
       const user = this.registrateForm.value;
-      this.userService.addUser(user).then(async (response) => {
-        if (response == "success") {
-          console.log('Producto guardado exitosamente:', response);
-          const toast = await this.toastController.create({
-            message: 'Producto guardado correctamente',
-            duration: 2000, // Duración de 2 segundos
-            position: 'top', // Posición superior
-          });
-          toast.present();
-        } else {
-          console.log('Error al guardar el producto:', response);
-        }
-      })
-        .catch((error) => {
-          console.error('Error al guardar el producto:', error);
+      try {
+        // Registra el usuario en Firebase Authentication
+        await this.userService.register(user);
+
+        // Agrega el usuario a la colección de usuarios en Firestore
+        await this.userService.addUser(user);
+
+        console.log('Usuario registrado exitosamente:', user);
+
+        const toast = await this.toastController.create({
+          message: 'Usuario registrado correctamente',
+          duration: 2000,
+          position: 'top',
         });
+        toast.present();
+
+        // Redirige a la página de inicio después del registro
+        this.router.navigate(['/home']);
+      } catch (error) {
+        console.error('Error al registrar el usuario:', error);
+      }
     } else {
       console.warn(
         'El formulario no es válido. Por favor, completa todos los campos requeridos.'
       );
     }
-    this.router.navigate(['/home']);
   }
-
-
 }

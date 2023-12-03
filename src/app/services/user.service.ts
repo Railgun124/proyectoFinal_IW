@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { User } from '../models/user';
 import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 @Injectable({
@@ -14,11 +15,35 @@ export class UserService {
   private userCollection: AngularFirestoreCollection<User>;
   snaphotChangeSubscrition:any;
 
-  constructor(private firestore: AngularFirestore) { 
+  authState: Observable<firebase.default.User | null>;
+
+  constructor(private firestore: AngularFirestore,private afAuth:AngularFireAuth) { 
     this.userCollection = 
     this.firestore.collection<User>('user');
     this.user = 
     this.userCollection.valueChanges();
+
+    this.authState = this.afAuth.authState;
+  }
+
+  getAuthState(): Observable<firebase.default.User | null> {
+    return this.authState;
+  }
+
+  register (user: User): Promise<any> {
+    var email=user.email;
+    var password=user.noControl;
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
+  }
+
+  login (user: User): Promise<any> {
+    var email=user.email;
+    var password=user.noControl;
+    return this.afAuth.signInWithEmailAndPassword(email, password);
+  }
+
+  logout (): Promise<any> {
+    return this.afAuth.signOut();
   }
 
   getUsers(): Observable<User[]> {

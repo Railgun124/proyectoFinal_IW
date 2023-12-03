@@ -1,31 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-row class="ion-align-items-center ion-justify-content-between">
-      <ion-col size="auto">
-        <ion-item button routerLink="/inicio">
-          <ion-img src="../../assets/imgs/logo.png" style="width: 50px;"></ion-img>
-        </ion-item>
-      </ion-col>
-      <ion-col size="auto" class="ion-margin-end">
-        <ion-item button [routerLink]="['/inicio']">
-          <ion-label>Inicio</ion-label>
-        </ion-item>
-      </ion-col>
 
-      <ion-col size="auto" class="ion-margin-end">
-        <ion-item button [routerLink]="['/registrate']">
-          <ion-label>Regístrate</ion-label>
-        </ion-item>
-      </ion-col>
-
-      <ion-col size="auto">
-        <ion-item button [routerLink]="['/iniciar-sesion']">
-          <ion-label>Iniciar Sesión</ion-label>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content class="ion-padding">
   <main class="w-full h-[850px] bg-cover pt-8" style="background-image: url('../../assets/imgs/tec.png');">
@@ -66,45 +39,3 @@
 </ion-content>
 
 
-<ion-footer class="ion-padding-top ion-background-gradient">
-  <ion-grid class="ion-padding-start ion-padding-end">
-    <ion-row class="ion-align-items-center ion-justify-content-between">
-      <ion-col size="auto">
-        <ion-list class="ion-text-white">
-          <ion-item>
-            <ion-label>Contactanos:</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="logo-whatsapp"></ion-icon>
-            <ion-text>
-              <a class="text-blanco" href="https://wa.me/523241165470">311-123-45-67</a>
-            </ion-text>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="mail"></ion-icon>
-            <ion-text>
-              <a class="text-blanco" href="mailto:zona.tigres@ittepic.edu.mx">zona.tigresittepic.edu.mx</a>
-            </ion-text>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-
-      <ion-col size="auto">
-        <ion-list class="ion-text-white">
-          <ion-item>
-            <ion-label>Contáctanos:</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-text>Zona Tigres ©</ion-text>
-          </ion-item>
-          <ion-item>
-            <ion-text>Instituto Tecnológico de Tepic</ion-text>
-          </ion-item>
-          <ion-item>
-            <ion-img src="../../assets/imgs/escudo_itt_grande.png" style="width: 50px;"></ion-img>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-footer>
