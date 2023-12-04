@@ -1,0 +1,48 @@
+<!-- registrate.page.html -->
+
+<ion-content class="ion-padding" >
+  <main class="w-full h-full bg-cover pt-8" style="background-image: url('../../assets/imgs/tec.png');">
+    <ion-item class="mb-4">
+      <ion-label position="stacked">Foto del producto:</ion-label>
+      <input type="file" (change)="addImage($event)" accept="image/*" required class="w-full p-8 border border-gray-300 rounded-md">
+    </ion-item>
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="w-1/2 mx-auto">
+      
+
+      <ion-item class="mb-4">
+        <ion-label position="stacked">Nombre:</ion-label>
+        <ion-input formControlName="name" type="text" required class="w-full p-2 border border-gray-300 rounded-md"></ion-input>
+      </ion-item>
+
+      <ion-item class="mb-4">
+        <ion-label position="stacked">Descripción:</ion-label>
+        <ion-textarea formControlName="description" required class="w-full p-2 border border-gray-300 rounded-md"></ion-textarea>
+      </ion-item>
+
+      <ion-item class="mb-4">
+        <ion-label position="stacked">Precio:</ion-label>
+        <ion-input formControlName="price" type="number" required class="w-full p-2 border border-gray-300 rounded-md"></ion-input>
+      </ion-item>
+
+      <ion-item class="mb-4">
+        <ion-label position="stacked">Categoría (Producto/Servicio):</ion-label>
+        <ion-select formControlName="category" required>
+          <ion-select-option value="producto">Producto</ion-select-option>
+          <ion-select-option value="servicio">Servicio</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="mb-4">
+        <ion-label position="stacked">Número de Celular:</ion-label>
+        <ion-input formControlName="cellphone" type="tel" required class="w-full p-2 border border-gray-300 rounded-md"></ion-input>
+      </ion-item>
+
+      <ion-input type="hidden" formControlName="aproved" class="w-full p-2 border border-gray-300 rounded-md"></ion-input>
+
+      <ion-button type="submit" expand="full" color="primary" >Enviar</ion-button>
+    </form>
+  </main>
+  <div style="height: 15em;">
+
+  </div>
+</ion-content>

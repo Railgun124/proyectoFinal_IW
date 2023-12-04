@@ -36,6 +36,12 @@
         </ion-col>
 
         <ion-col size="auto" *ngIf="isAuthenticated">
+          <ion-item button [routerLink]="['/add-product']">
+            <ion-label>Emprender</ion-label>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="auto" *ngIf="isAuthenticated">
           <ion-item button [routerLink]="['/cerrar-sesion']">
             <ion-label>Cerrar Sesión</ion-label>
           </ion-item>

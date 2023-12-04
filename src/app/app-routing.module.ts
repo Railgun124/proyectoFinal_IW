@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'cerrar-sesion',
     loadChildren: () => import('./cerrar-sesion/cerrar-sesion.module').then( m => m.CerrarSesionPageModule)
   },
+  {
+    path: 'add-product',
+    loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
+  },
+  
 ];
 
 @NgModule({
