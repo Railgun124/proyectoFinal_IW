@@ -41,6 +41,12 @@
           </ion-item>
         </ion-col>
 
+        <ion-col size="auto" *ngIf="isAuthenticated && isAdmin">
+          <ion-item button [routerLink]="['/aproved-product']">
+            <ion-label>Aprobar productos</ion-label>
+          </ion-item>
+        </ion-col>
+
         <ion-col size="auto" *ngIf="isAuthenticated">
           <ion-item button [routerLink]="['/cerrar-sesion']">
             <ion-label>Cerrar Sesión</ion-label>

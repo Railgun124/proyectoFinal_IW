@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   isAuthenticated = false;
   user: any;
+  isAdmin = false;
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
@@ -17,6 +18,9 @@ export class AppComponent implements OnInit {
     this.userService.getAuthState().subscribe(user => {
       this.isAuthenticated = !!user;
       this.user = user; // Guarda información adicional del usuario si es necesario
+      if(this.user.uid === "HIPaegVIAKO51sUXBCLASz0IiIv1") {
+        this.isAdmin = true;
+      }
     });
   }
 
@@ -24,6 +28,7 @@ export class AppComponent implements OnInit {
   logout() {
     this.userService.logout().then(() => {
       // Redirige a la página de inicio después de cerrar sesión
+      this.isAdmin = false;
       this.router.navigate(['/cerrar-sesion']);
     });
   }
