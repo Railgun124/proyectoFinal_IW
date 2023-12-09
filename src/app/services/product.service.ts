@@ -41,7 +41,7 @@ export class ProductService {
 
   addProducts(product: Product): Promise<any> {
     return this.productCollection.add(product).then((doc)=>{
-      //user.id = doc.id;
+      product.id = doc.id;
       console.log("Producto añadido con id: "+doc.id)
       return product;
     })
@@ -58,7 +58,7 @@ export class ProductService {
 
     return new Promise((resolve, reject) => {
       uploadTask.then(snapshot => {
-        resolve(snapshot);
+        resolve(snapshot.ref.getDownloadURL());
       }).catch(error => {
         reject(error);
       });

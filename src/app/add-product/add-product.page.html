@@ -2,13 +2,13 @@
 
 <ion-content class="ion-padding" >
   <main class="w-full h-full bg-cover pt-8" style="background-image: url('../../assets/imgs/tec.png');">
-    <ion-item class="mb-4">
-      <ion-label position="stacked">Foto del producto:</ion-label>
-      <input type="file" (change)="addImage($event)" accept="image/*" required class="w-full p-8 border border-gray-300 rounded-md">
-    </ion-item>
     <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="w-1/2 mx-auto">
-      
 
+      <ion-item class="mb-4">
+        <ion-label position="stacked">Foto del producto:</ion-label>
+        <input type="file" formControlName="image" (change)="addImage($event)" accept="image/*" required class="w-full p-8 border border-gray-300 rounded-md">
+      </ion-item>
+  
       <ion-item class="mb-4">
         <ion-label position="stacked">Nombre:</ion-label>
         <ion-input formControlName="name" type="text" required class="w-full p-2 border border-gray-300 rounded-md"></ion-input>
