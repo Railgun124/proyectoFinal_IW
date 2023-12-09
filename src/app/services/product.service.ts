@@ -24,6 +24,10 @@ export class ProductService {
   }
 
   getProducts(): Observable<Product[]> {
+    return this.product;
+  }
+
+  /*getProducts(): Observable<Product[]> {
     return this.productCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -33,7 +37,7 @@ export class ProductService {
         })
       })
     )
-  }
+  }*/
 
   addProducts(product: Product): Promise<any> {
     return this.productCollection.add(product).then((doc)=>{
