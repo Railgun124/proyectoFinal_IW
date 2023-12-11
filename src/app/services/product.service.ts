@@ -42,6 +42,7 @@ export class ProductService {
   addProducts(product: Product): Promise<any> {
     return this.productCollection.add(product).then((doc)=>{
       product.id = doc.id;
+      this.productCollection.doc(product.id).update({ id: product.id });
       console.log("Producto añadido con id: "+doc.id)
       return product;
     })
@@ -51,6 +52,8 @@ export class ProductService {
     });
   }
 
+
+  
   uploadFile(file: any, uid: string): Promise<any> {
     const filePath =   'Imagenes/' + uid + '/' + file.name;
     const storageRef = this.storage.ref(filePath);
@@ -64,6 +67,27 @@ export class ProductService {
       });
     });
   }
+
+  approveProduct(product: Product): Promise<void> {
+
+    if (!product.aproved) {
+      product.aproved = true;
+      return this.productCollection.doc(product.id).update({ aproved: true })
+        .then(() => {
+          console.log('Agregado correctamente');
+        })
+        .catch(error => console.error(error));
+    } else {
+      return this.productCollection.doc(product.id).update({ aproved: false })
+        .then(() => {
+          console.log('Desaprobado');
+        })
+        .catch(error => console.error(error));
+    }
+  }
+  
+  
+
   
 
 

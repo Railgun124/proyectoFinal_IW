@@ -9,10 +9,12 @@ import { Product } from '../models/product';
 })
 export class ProductosPage {
   public products: Product[] = [];
+  public approvedProducts: Product[] = [];
 
   constructor( private productService: ProductService) {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
+      this.approvedProducts = products.filter(product => product.aproved);
     });
 
   }

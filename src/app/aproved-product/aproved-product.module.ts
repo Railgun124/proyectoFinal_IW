@@ -8,12 +8,13 @@ import { AprovedProductPageRoutingModule } from './aproved-product-routing.modul
 
 import { AprovedProductPage } from './aproved-product.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AprovedProductPageRoutingModule
+    AprovedProductPageRoutingModule,
   ],
   declarations: [AprovedProductPage]
 })
