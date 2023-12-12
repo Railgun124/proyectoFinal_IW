@@ -52,6 +52,11 @@ export class ProductService {
     });
   }
 
+  deleteProduct(product: Product): Promise<string> {
+    this.productCollection.doc(product.id).delete();
+    return Promise.resolve('success');
+  }
+
 
   
   uploadFile(file: any, uid: string): Promise<any> {

@@ -8,3 +8,4 @@ export interface Product {
     cellphone: string;
     aproved: boolean;
 }
+

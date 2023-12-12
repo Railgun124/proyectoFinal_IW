@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
+import { UserService } from '../services/user.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-productos',
@@ -11,12 +13,46 @@ export class ProductosPage {
   public products: Product[] = [];
   public approvedProducts: Product[] = [];
 
-  constructor( private productService: ProductService) {
+  isAuthenticated = false;
+  user: any;
+  isAdmin = false;
+
+  constructor( private productService: ProductService, private userService: UserService,private alertController: AlertController) {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
       this.approvedProducts = products.filter(product => product.aproved);
     });
 
+    this.userService.getAuthState().subscribe(user => {
+      this.isAuthenticated = !!user;
+      this.user = user; // Guarda información adicional del usuario si es necesario
+      if(this.user.uid === "HIPaegVIAKO51sUXBCLASz0IiIv1") {
+        this.isAdmin = true;
+      }
+    });
+
+  }
+
+  async deleteProduct(product: Product) {
+    const alert = await this.alertController.create({
+      header: 'Eliminar Producto',
+      message: `¿Esta seguro de que quieres eliminar el producto ${product.name} ?`,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          handler: async() => {
+             await this.productService.deleteProduct(product);
+           
+          },
+        },
+      ],
+    });
+  
+    await alert.present();
   }
 
 }
