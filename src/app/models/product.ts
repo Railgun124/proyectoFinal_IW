@@ -8,6 +8,20 @@ export interface Product {
     cellphone: string;
     aproved: boolean;
     salesman?: string;
-    comments?: { user: string; comment: string; star: number;}[];
+    comments?: [{
+      user: any; 
+      comment: string;
+      date: Date;
+      stars: number;
+    }];
 }
+
+export interface Comment{
+  user: any; 
+  comment: string;
+  date: Date;
+  stars: number;
+}
+
+
 

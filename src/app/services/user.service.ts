@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, BehaviorSubject } from 'rxjs';
 import { User } from '../models/user';
 import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -9,7 +9,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root'
 })
 export class UserService {
-
+  private userEmailSubject = new BehaviorSubject<string>('');
+  userEmail$ = this.userEmailSubject.asObservable();
   private user: Observable<User[]>;
 
   private userCollection: AngularFirestoreCollection<User>;
@@ -24,6 +25,10 @@ export class UserService {
     this.userCollection.valueChanges();
 
     this.authState = this.afAuth.authState;
+  }
+
+  setUserEmail(email: string) {
+    this.userEmailSubject.next(email);
   }
 
   getAuthState(): Observable<firebase.default.User | null> {

@@ -1,0 +1,61 @@
+<ion-content class="ion-padding">
+  <main class="w-full h-auto bg-cover bg-crema">
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <!-- Tu contenido actual aquí -->
+
+        <ion-row>
+          <ion-col size="auto" *ngFor="let product of products; ">
+            <div class="flex flex-wrap justify-evenly h-full items-center mt-4">
+              <div class="bg-blanco w-96 h-auto rounded-md m-11 shadow-md">
+                <div class="w-96 h-auto flex items-center justify-center">
+                  <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" />
+                </div>
+
+                <div class="flex flex-col justify-center mx-8">
+                  <form  [formGroup]="updateForm" (ngSubmit)="updateProduct()">
+                    <ion-item>
+                      <ion-label position="floating">Nombre del Producto</ion-label>
+                      <ion-input type="text" formControlName="name" name="name"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="floating">Descripción</ion-label>
+                      <ion-textarea formControlName="description" name="description"></ion-textarea>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="floating">Precio</ion-label>
+                      <ion-input type="number" formControlName="price" name="price"></ion-input>
+                    </ion-item>
+
+                    <ion-item class="mb-4">
+                      <ion-label position="stacked">Categoría (Producto/Servicio):</ion-label>
+                      <ion-select formControlName="category" name="category" required>
+                        <ion-select-option value="producto">Producto</ion-select-option>
+                        <ion-select-option value="servicio">Servicio</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="floating">Telefono</ion-label>
+                      <ion-input type="number" formControlName="cellphone" name="cellphone"></ion-input>
+                    </ion-item>
+
+
+                    <ion-button expand="block" type="submit" color="primary">
+                      Guardar Cambios
+                    </ion-button>
+                  </form>
+                  <br><br><br><br>
+                  <br><br><br><br>
+                  <br><br><br><br>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-row>
+    </ion-grid>
+  </main>
+</ion-content>

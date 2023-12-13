@@ -5,7 +5,7 @@
         <!-- Tu contenido actual aquí -->
 
         <ion-row>
-          <ion-col size="auto" *ngFor="let product of approvedProducts; ">
+          <ion-col size="auto" *ngFor="let product of myproducts; ">
             <div class="flex flex-wrap justify-evenly h-full items-center mt-4">
               <div class="bg-blanco w-96 h-auto rounded-md m-11 shadow-md">
 
@@ -45,8 +45,11 @@
                     <a class="text-sm" href="https://wa.me/52{{product.cellphone}}">WhatsApp</a>
                   </div>
 
-                    <ion-button id="details" (click)="routeDetails(product.id)" class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900">
-                      Ver Más
+                    <ion-button class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900" (click)="deleteProduct(product)">
+                      Borrar
+                    </ion-button>
+                    <ion-button  class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900" [routerLink]="['/edit-myproduct', product.id]">
+                      Editar
                     </ion-button>
                     <br><br><br><br>
                     <br><br><br><br>

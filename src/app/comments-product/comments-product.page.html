@@ -8,15 +8,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <form  #form="ngForm">
+  <form  [formGroup]="comentarioForm" (ngSubmit)="GuardarComentario()">
     <ion-item>
       <ion-label position="floating">Comentario sobre el producto</ion-label>
-      <ion-textarea rows="4" [(ngModel)]="comment" name="comment" required></ion-textarea>
+      <ion-textarea rows="4" formControlName="comment" name="comment" required></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label>Calificación:</ion-label>
-      <ion-select [(ngModel)]="stars" name="stars" required>
+      <ion-select formControlName="stars" name="stars" required>
         <ion-select-option value="1">1 estrella</ion-select-option>
         <ion-select-option value="2">2 estrellas</ion-select-option>
         <ion-select-option value="3">3 estrellas</ion-select-option>
@@ -25,9 +25,9 @@
       </ion-select>
     </ion-item>
 
-    <ion-button expand="block" type="submit" [disabled]="form.invalid">Enviar</ion-button>
+    <ion-button expand="block" type="submit" [routerLink]="['/details-product', id]">Volver</ion-button>
 
-    
+    <ion-button expand="block" type="submit">Enviar</ion-button>
 
   </form>
 

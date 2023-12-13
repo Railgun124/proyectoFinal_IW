@@ -30,6 +30,12 @@
         </ion-col>
 
         <ion-col size="auto" *ngIf="isAuthenticated">
+          <ion-item button [routerLink]="['/my-products']">
+            <ion-label>Mis Productos</ion-label>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="auto" *ngIf="isAuthenticated">
           <ion-item button [routerLink]="['/productos']">
             <ion-label>Productos</ion-label>
           </ion-item>
@@ -48,7 +54,7 @@
         </ion-col>
 
         <ion-col size="auto" *ngIf="isAuthenticated">
-          <ion-item button [routerLink]="['/cerrar-sesion']">
+          <ion-item button (click)="logout()">
             <ion-label>Cerrar Sesión</ion-label>
           </ion-item>
         </ion-col>
@@ -62,7 +68,7 @@
   <ion-footer class="ion-padding-top ion-background-gradient">
     <ion-grid class="ion-padding-start ion-padding-end">
       <ion-row class="ion-align-items-center ion-justify-content-between">
-        <ion-col size="auto">
+        <ion-col size="auto" *ngIf="isAuthenticated">
           <ion-list class="ion-text-white">
             <ion-item>
               <ion-label>Contactanos:</ion-label>
@@ -82,7 +88,7 @@
           </ion-list>
         </ion-col>
   
-        <ion-col size="auto">
+        <ion-col size="auto" >
           <ion-list class="ion-text-white">
             <ion-item>
               <ion-label>Contáctanos:</ion-label>

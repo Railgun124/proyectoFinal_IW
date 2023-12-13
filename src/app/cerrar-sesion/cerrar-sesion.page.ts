@@ -13,7 +13,7 @@ export class CerrarSesionPage implements OnInit {
 
   ngOnInit() {
     this.userService.logout();
-    this.router.navigate(['/productos']);
+    this.router.navigate(['/home']);
   }
 
 }

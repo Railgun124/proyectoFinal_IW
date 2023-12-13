@@ -40,7 +40,11 @@ export class IniciarSesionPage  implements OnInit {
       for (let i = 0; i < this.user.length; i++) {
         if (this.user[i].noControl == numero_control && this.user[i].nip == nip) {
           userFound = true;
-          this.userService.login(this.user[i]);
+          this.userService.login(this.user[i]).then(() => {
+            this.presentToast('Credenciales Correctas');
+          }).catch((error) => {
+            this.presentToast('Credenciales incorrectas');
+          });
           this.router.navigate(['/home']);
           break;
         }

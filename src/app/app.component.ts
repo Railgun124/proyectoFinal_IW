@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // Suscríbete al observable authState para rastrear el estado de autenticación
     this.userService.getAuthState().subscribe(user => {
+      const email = user?.email || '';
+      this.userService.setUserEmail(email);
       this.isAuthenticated = !!user;
       this.user = user; // Guarda información adicional del usuario si es necesario
       if(this.user.uid === "HIPaegVIAKO51sUXBCLASz0IiIv1") {
@@ -26,10 +28,7 @@ export class AppComponent implements OnInit {
 
   // Añade una función para cerrar sesión
   logout() {
-    this.userService.logout().then(() => {
-      // Redirige a la página de inicio después de cerrar sesión
-      this.isAdmin = false;
-      this.router.navigate(['/cerrar-sesion']);
-    });
+    this.isAdmin = false;
+    this.router.navigate(['/cerrar-sesion']);
   }
 }

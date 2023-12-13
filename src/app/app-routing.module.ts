@@ -38,14 +38,24 @@ const routes: Routes = [
   {
     path: 'aproved-product',
     loadChildren: () => import('./aproved-product/aproved-product.module').then( m => m.AprovedProductPageModule)
-  },  {
-    path: 'comments-product',
+  },
+  {
+    path: 'comments-product/:id',
     loadChildren: () => import('./comments-product/comments-product.module').then( m => m.CommentsProductPageModule)
   },
   {
-    path: 'details-product',
+    path: 'details-product/:id',
     loadChildren: () => import('./details-product/details-product.module').then( m => m.DetailsProductPageModule)
   },
+  {
+    path: 'my-products',
+    loadChildren: () => import('./my-products/my-products.module').then( m => m.MyProductsPageModule)
+  },
+  {
+    path: 'edit-myproduct/:id',
+    loadChildren: () => import('./edit-myproduct/edit-myproduct.module').then( m => m.EditMyproductPageModule)
+  },
+
 
   
 ];
