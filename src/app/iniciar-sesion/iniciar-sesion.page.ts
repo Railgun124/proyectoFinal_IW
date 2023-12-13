@@ -36,7 +36,20 @@ export class IniciarSesionPage  implements OnInit {
       const numero_control = this.iniciarSesionForm.value.numero_control;
       const nip = this.iniciarSesionForm.value.nip;
       let userFound = false;
+      let activo=true;
 
+    await fetch("https://estudiantes-407720.uc.r.appspot.com/api/v1/students/"+numero_control,{mode: 'cors'})
+    .then(response =>  response.json())
+    .then(data =>{
+      if(data['data'].status == "inactivo"){
+        this.presentToast("Estudiante inactivo");
+        activo=false;
+      }
+    }).catch(error => {
+      console.error("Error al obtener los datos de la API:", error);
+    });
+
+    if(activo){ 
       for (let i = 0; i < this.user.length; i++) {
         if (this.user[i].noControl == numero_control && this.user[i].nip == nip) {
           userFound = true;
@@ -55,7 +68,7 @@ export class IniciarSesionPage  implements OnInit {
       }
     } else {
       console.warn('El formulario no es válido. Por favor, completa todos los campos requeridos.');
-    }
+    }}
   }
 
   async presentToast(message: string) {
