@@ -77,6 +77,7 @@ async addProduct() {
 
         if (user) {
           this.currentUser = user.uid;
+          product.salesman = user.email;
           try {
             const url = await this.productService.uploadFile(imageFile, this.currentUser);
             console.log(url);

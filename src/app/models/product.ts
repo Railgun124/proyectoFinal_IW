@@ -7,5 +7,7 @@ export interface Product {
     category: string;
     cellphone: string;
     aproved: boolean;
+    salesman?: string;
+    comments?: { user: string; comment: string; star: number;}[];
 }
 

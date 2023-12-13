@@ -38,7 +38,15 @@ const routes: Routes = [
   {
     path: 'aproved-product',
     loadChildren: () => import('./aproved-product/aproved-product.module').then( m => m.AprovedProductPageModule)
+  },  {
+    path: 'comments-product',
+    loadChildren: () => import('./comments-product/comments-product.module').then( m => m.CommentsProductPageModule)
   },
+  {
+    path: 'details-product',
+    loadChildren: () => import('./details-product/details-product.module').then( m => m.DetailsProductPageModule)
+  },
+
   
 ];
 

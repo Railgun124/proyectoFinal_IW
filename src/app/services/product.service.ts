@@ -27,6 +27,26 @@ export class ProductService {
     return this.product;
   }
 
+  getProductById(productId: string): Observable<Product> {
+    return this.firestore.doc<Product>(`product/${productId}`).snapshotChanges().pipe(
+      map(action => {
+        const data = action.payload.data() as Product;
+        const id = action.payload.id;
+        return { id, ...data } as Product;
+      })
+    );
+  }
+  
+  getProduct(productId: string): Observable<Product[]> {
+    return this.firestore.doc<any>(`product/${productId}`).snapshotChanges().pipe(
+      map(action => {
+        const data = action.payload.data() as any;
+        const id = action.payload.id;
+        return { id, ...data };
+      })
+    );
+  }
+
   /*getProducts(): Observable<Product[]> {
     return this.productCollection.snapshotChanges().pipe(
       map(actions => {

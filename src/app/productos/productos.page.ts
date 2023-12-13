@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { UserService } from '../services/user.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
@@ -17,7 +18,7 @@ export class ProductosPage {
   user: any;
   isAdmin = false;
 
-  constructor( private productService: ProductService, private userService: UserService,private alertController: AlertController) {
+  constructor( private productService: ProductService, private userService: UserService,private alertController: AlertController, private router: Router) {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
       this.approvedProducts = products.filter(product => product.aproved);
@@ -53,6 +54,14 @@ export class ProductosPage {
     });
   
     await alert.present();
+  }
+
+  routeDetails(id: string | undefined) {
+    if (id) {
+      this.router.navigate(['/details-product',id]);
+    } else {
+      console.error('El producto no tiene id definido');
+    }
   }
 
 }

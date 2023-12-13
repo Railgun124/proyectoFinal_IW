@@ -58,6 +58,12 @@ export class UserService {
     )
   }
 
+  getUserByEmail(email: string): Observable<User | undefined> {
+    return this.getUsers().pipe(
+      map(users => users.find(user => user.email === email))
+    );
+  }
+
   addUser(user: User): Promise<any> {
     return this.userCollection.add(user).then((doc)=>{
       //user.id = doc.id;
