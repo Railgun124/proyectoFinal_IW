@@ -1,34 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Agregar Comentario</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <form  [formGroup]="comentarioForm" (ngSubmit)="GuardarComentario()">
-    <ion-item>
-      <ion-label position="floating">Comentario sobre el producto</ion-label>
-      <ion-textarea rows="4" formControlName="comment" name="comment" required></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Calificación:</ion-label>
-      <ion-select formControlName="stars" name="stars" required>
-        <ion-select-option value="1">1 estrella</ion-select-option>
-        <ion-select-option value="2">2 estrellas</ion-select-option>
-        <ion-select-option value="3">3 estrellas</ion-select-option>
-        <ion-select-option value="4">4 estrellas</ion-select-option>
-        <ion-select-option value="5">5 estrellas</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-button expand="block" type="submit" [routerLink]="['/details-product', id]">Volver</ion-button>
-
-    <ion-button expand="block" type="submit">Enviar</ion-button>
-
-  </form>
-
+<ion-content [fullscreen]="true" class="ion-align-items-center ion-justify-content-center">
+  <main class="w-full h-auto bg-cover bg-crema" style="min-height: 95vh;">
+    <ion-grid>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <div class="bg-negro p-8 rounded-lg shadow-lg bg-opacity-40 w-1/2 mt-20">
+        <form  [formGroup]="comentarioForm" (ngSubmit)="GuardarComentario()">
+          <div>
+            <h1 class="text-2xl font-semibold text-blanco mb-4 text-center">Comentario del producto</h1>
+            <ion-textarea rows="4" style="color: white;" formControlName="comment" name="comment" class="w-full p-2 border border-gray-300 rounded-md" required></ion-textarea>
+          </div>
+          <br>
+      
+          <div>
+            <ion-label style="color: white;">Calificación:</ion-label>
+            <ion-select formControlName="stars"  style="color: white;" name="stars" required class="w-full p-2 border border-gray-300 rounded-md">
+              <ion-select-option value="1">1 estrella</ion-select-option>
+              <ion-select-option value="2">2 estrellas</ion-select-option>
+              <ion-select-option value="3">3 estrellas</ion-select-option>
+              <ion-select-option value="4">4 estrellas</ion-select-option>
+              <ion-select-option value="5">5 estrellas</ion-select-option>
+            </ion-select>
+          </div>
+          <br>
+      
+          <div class="flex flex-col items-center justify-center">
+            <ion-row>
+              <button id="iniciarSesion" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja mr-10">Enviar</button>
+              <button expand="block" type="submit" [routerLink]="['/details-product', id]" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">Volver</button>
+              
+            </ion-row>
+          </div>
+        </form>
+      </div>
+    </ion-row>  
+    </ion-grid>
+</main>
 </ion-content>

@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <main class="w-full h-auto bg-cover bg-crema">
+<ion-content class="ion-align-items-center ion-justify-content-center">
+  <main class="w-full h-auto bg-cover bg-crema" style="min-height: 95vh;">
 
     <ion-grid>
       <ion-row class="ion-align-items-center ion-justify-content-center">
@@ -21,7 +21,7 @@
               </div>
               <!-- -->
               <div class="w-96 h-auto flex items-center justify-center">
-                <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" />
+                <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" style="height: 320px; object-fit: cover" />
               </div>
               <div class="flex flex-col justify-center mx-8">
                 <h1 class="font-semibold mb-2 text-center mt-2">{{product.name}}</h1>
@@ -57,9 +57,11 @@
                   </svg>
                   <a class="text-sm" href="https://wa.me/52{{product.cellphone}}">WhatsApp</a>
                 </div>
-                <ion-button id="ver_mas" (click)="routeDetails(product.id)"
-                class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900 ">Ver
-                Más</ion-button>
+                <div class="text-center my-3">
+                  <button id="ver_mas" type="submit" (click)="routeDetails(product.id)"
+                    class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900">Ver
+                    Más</button>
+                </div>
               </div>
             </div>
           </div>
@@ -80,7 +82,7 @@
               <div class="w-96 h-auto flex items-center justify-center">
                 <!-- Botón eliminar -->
               
-                <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" />
+                <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" style="height: 320px; object-fit: cover"/>
               </div>
               <div class="flex flex-col justify-center mx-8">
                 <h1 class="font-semibold mb-2 text-center mt-2">{{product.name}}</h1>
@@ -118,9 +120,9 @@
                 </div>
 
                 <div class="text-center my-3">
-                  <ion-button id="ver_mas" type="submit" (click)="routeDetails(product.id)"
+                  <button id="ver_mas" type="submit" (click)="routeDetails(product.id)"
                     class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900">Ver
-                    Más</ion-button>
+                    Más</button>
                 </div>
               </div>
             </div>

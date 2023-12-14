@@ -1,34 +1,32 @@
 
-
-<ion-content class="ion-padding">
-  <main class="w-full h-[850px] bg-cover pt-8" style="background-image: url('../../assets/imgs/tec.png');">
+<ion-content class="ion-padding" class="ion-align-items-center ion-justify-content-center">
+  <main class="w-full h-[850px] bg-cover pt-8 flex align-center items-center" style="background-image: url('../../assets/imgs/tec.png');" >
     <ion-grid>
       <ion-row class="ion-align-items-center ion-justify-content-center">
-        <ion-col size="auto">
-          <div class="bg-negro p-8 rounded-lg shadow-lg bg-opacity-40 w-3/4">
+        <ion-col size="auto" >
+          <div class="bg-negro p-8 rounded-lg shadow-lg bg-opacity-40">
             <h1 class="text-2xl font-semibold text-blanco mb-4 text-center">Registro de Usuario</h1>
             <!-- Utiliza el FormGroup y los controles de formulario -->
-            <form [formGroup]="registrateForm" (ngSubmit)="registrate()">
+            <form [formGroup]="registrateForm" (ngSubmit)="registrate()" class="mt-2">
               <div class="mb-4">
                 <label for="username" class="block text-blanco font-medium mb-2">Username:</label>
-                <ion-input formControlName="username" class="border border-gray-300 rounded-md p-2"></ion-input>
+                <ion-input style="color: white;" formControlName="username" class="border border-gray-300 rounded-md p-2"></ion-input>
               </div>
               <div class="mb-4">
                 <label for="email" class="block text-blanco font-medium mb-2">Email:</label>
-                <ion-input formControlName="email" class="border border-gray-300 rounded-md p-2"></ion-input>
+                <ion-input style="color: white;" formControlName="email" class="border border-gray-300 rounded-md p-2"></ion-input>
               </div>
               <div class="mb-4">
                 <label for="noControl" class="block text-blanco font-medium mb-2">Número de Control:</label>
-                <ion-input formControlName="noControl" class="border border-gray-300 rounded-md p-2"></ion-input>
+                <ion-input style="color: white;" formControlName="noControl" class="border border-gray-300 rounded-md p-2"></ion-input>
               </div>
               <div class="mb-4">
                 <label for="nip" class="block text-blanco font-medium mb-2">NIP:</label>
-                <ion-input formControlName="nip" type="password"
+                <ion-input style="color: white;" formControlName="nip" type="password"
                   class="border border-gray-300 rounded-md p-2"></ion-input>
               </div>
               <div class="text-center">
-                <ion-button type="submit"
-                  class="bg-naranjam text-blanco font-semibold text-lg py-2 px-4 rounded-md hover:bg-naranja">Registrar</ion-button>
+                <button type="submit" class="bg-naranjam text-blanco font-semibold text-lg py-2 px-4 rounded-md hover:bg-naranja">Registrar</button>
               </div>
             </form>
           </div>
@@ -37,5 +35,3 @@
     </ion-grid>
   </main>
 </ion-content>
-
-

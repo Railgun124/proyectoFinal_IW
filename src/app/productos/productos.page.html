@@ -1,31 +1,31 @@
-<ion-content class="ion-padding">
-  <main class="w-full h-auto bg-cover bg-crema">
+<ion-content class="ion-align-items-center ion-justify-content-center">
+  <main class="w-full h-auto bg-cover bg-crema" style="min-height: 95vh;">
     <ion-grid>
       <ion-row class="ion-align-items-center ion-justify-content-center">
         <!-- Tu contenido actual aquí -->
 
         <ion-row>
           <ion-col size="auto" *ngFor="let product of approvedProducts; ">
-            <div class="flex flex-wrap justify-evenly h-full items-center mt-4">
+            <div class="flex flex-wrap justify-evenly h-auto items-center mt-4">
               <div class="bg-blanco w-96 h-auto rounded-md m-11 shadow-md">
 
                 <div class="w-96 h-auto flex items-center justify-center">
-                  <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md"/>
+                  <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" style="height: 320px; object-fit: cover"/>
                 </div>
 
-                <div class="flex flex-col justify-center mx-8">
+                <div class="flex flex-col justify-center mx-8 h-auto">
                   <h1 class="font-semibold mb-2 text-center mt-2"> {{product.name}} </h1>
                   <div class="flex flex-col">
                     <h1 class="text-sm font-semibold">Descripción:</h1>
                     <p class="text-justify text-sm">{{product.description}}</p>
                   </div>
 
-                  <div class="flex flex-row mt-2">
+                  <div class="flex flex-row mt-2 h-auto">
                     <h1 class="text-sm font-semibold mr-1">Precio:</h1>
                     <h1 class="text-sm">{{ product.price| currency }}</h1>
                   </div>
 
-                  <div class="flex flex-row mt-2">
+                  <div class="flex flex-row mt-2 h-auto">
                     <svg class="w-4 mr-3" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
                       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -42,15 +42,13 @@
                         </g>
                       </g>
                     </svg>
-                    <a class="text-sm" href="https://wa.me/52{{product.cellphone}}">WhatsApp</a>
+                    <a class="text-sm" target="_blank" href="https://wa.me/52{{product.cellphone}}">WhatsApp</a>
                   </div>
-
-                    <ion-button id="details" (click)="routeDetails(product.id)" class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900">
+                  <br>
+                    <button id="details" (click)="routeDetails(product.id)" class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900">
                       Ver Más
-                    </ion-button>
-                    <br><br><br><br>
-                    <br><br><br><br>
-                    <br><br><br><br>
+                    </button>
+                    <br>
                 </div>
               </div>
             </div>

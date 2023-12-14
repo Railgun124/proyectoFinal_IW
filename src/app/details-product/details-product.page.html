@@ -1,5 +1,5 @@
-<ion-content class="ion-padding">
-  <main class="w-full h-auto bg-cover bg-crema">
+<ion-content class="ion-align-items-center ion-justify-content-center">
+  <main class="w-full h-auto bg-cover bg-crema" style="min-height: 95vh;">
     <ion-grid>
       <ion-row class="ion-align-items-center ion-justify-content-center">
         <!-- Tu contenido actual aquí -->
@@ -8,12 +8,10 @@
 
 
           <ion-col size="auto" *ngFor="let product of products; ">
-            <div class="flex flex-wrap justify-evenly h-full items-center mt-4">
+            <div class="flex flex-col h-full items-center mt-4">
               <div class="bg-blanco w-96 h-auto rounded-md m-11 shadow-md">
-
-
                 <div class="w-96 h-auto flex items-center justify-center">
-                  <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" />
+                  <img [src]="product.image" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" style="height: 320px; object-fit: cover" />
                 </div>
 
                 <div class="flex flex-col justify-center mx-8">
@@ -56,34 +54,33 @@
                     </svg>
                     <a class="text-sm" href="https://wa.me/52{{product.cellphone}}">WhatsApp</a>
                   </div>
-                  <ion-button expand="block" type="submit" [routerLink]="['/productos']">Volver</ion-button>
-
-                  <br><br><br><br>
-                  <br><br><br><br>
-                  <br><br><br><br>
-                  <div class="w-96 h-auto flex items-center justify-center">
-                    <ion-list>
-                      <ion-item *ngFor="let comentario of product.comments; let i = index">
-                        <!-- Botón eliminar -->
-                        <div class="text-end my-3" *ngIf="isAuthenticated && isAdmin">
-                          <ion-button fill="clear" (click)="deleteComment(i)">
-                            <ion-icon name="close-circle-outline" color="danger" style="font-size: 2rem;"></ion-icon>
-                          </ion-button>
-                        </div>
-                        <!-- -->
-                        Usuario:
-                        <ion-label>{{ comentario.user }}</ion-label>
-                        Comentario:
-                        <ion-label>{{ comentario.comment }}</ion-label>
-                        Estrellas:
-                        <ion-label>{{ comentario.stars }}</ion-label>
-                        <ion-label>{{ formatDate(comentario.date) }}</ion-label>
-                        <!-- Agrega aquí más detalles del comentario, según sea necesario -->
-                      </ion-item>
-                    </ion-list>
-                  </div>
-
+                  <br>
+                  <button id="details" [routerLink]="['/productos']" class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900">
+                    Volver
+                  </button>
+                  <br>
                 </div>
+              </div>
+              <div class="w-screen h-auto flex items-center justify-center">
+                <ion-list style="width: 80%;">
+                  <ion-item *ngFor="let comentario of product.comments; let i = index">
+                    <!-- Botón eliminar -->
+                    <div class="text-end my-3" *ngIf="isAuthenticated && isAdmin">
+                      <ion-button fill="clear" (click)="deleteComment(i)">
+                        <ion-icon name="close-circle-outline" color="danger" style="font-size: 2rem;"></ion-icon>
+                      </ion-button>
+                    </div>
+                    <!-- -->
+                    Usuario:
+                    <ion-label style="height: auto;">{{ comentario.user }}</ion-label>
+                    Comentario:
+                    <ion-label style="height: auto;">{{ comentario.comment }}</ion-label>
+                    Estrellas:
+                    <ion-label style="height: auto;">{{ comentario.stars }}</ion-label>
+                    <ion-label style="height: auto;">{{ formatDate(comentario.date) }}</ion-label>
+                    <!-- Agrega aquí más detalles del comentario, según sea necesario -->
+                  </ion-item>
+                </ion-list>
               </div>
             </div>
           </ion-col>
@@ -92,8 +89,6 @@
               <ion-icon name="add"></ion-icon>
             </ion-fab-button>
           </ion-fab>
-
-
         </ion-row>
       </ion-row>
     </ion-grid>
